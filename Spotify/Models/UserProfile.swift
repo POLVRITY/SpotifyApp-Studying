@@ -2,7 +2,7 @@
 //  UserProfile.swift
 //  Spotify
 //
-//  Created by Admin on 14.11.2022.
+//  Created by POLVRITY on 14.11.2022.
 //
 
 import Foundation
@@ -15,10 +15,5 @@ struct UserProfile: Codable {
     let external_urls: [String: String]
     let id: String
     let product: String
-    let images: [UserImage]
+    let images: [APIImage]
 }
-
-struct UserImage: Codable {
-    let url: String
-}
-
