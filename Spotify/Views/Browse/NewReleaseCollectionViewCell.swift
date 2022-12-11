@@ -95,6 +95,7 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
         artistsNameLabel.text = nil
         numberOfTracksLabel.text = nil
         albumCoverImageView.image = nil
+        numberOfTracksLabel.sizeToFit()
     }
     
     func configure(with viewModel: NewReleasesCellViewModel) {
