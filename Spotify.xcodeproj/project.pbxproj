@@ -149,7 +149,6 @@
 				84E6DD0D2922528A003F545C /* Views */,
 				84E6DD0C29225282003F545C /* Controllers */,
 				84E6DD0629225249003F545C /* Info.plist */,
-				84E6DD1229225411003F545C /* Products */,
 			);
 			path = Spotify;
 			sourceTree = "<group>";
@@ -219,13 +218,6 @@
 				84E6DD0129225249003F545C /* Assets.xcassets */,
 			);
 			path = Recources;
-			sourceTree = "<group>";
-		};
-		84E6DD1229225411003F545C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Products;
 			sourceTree = "<group>";
 		};
 		84E6DD1A29225498003F545C /* Core */ = {
