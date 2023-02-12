@@ -49,21 +49,27 @@ class FeaturedPlaylistsCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        creatorNameLabel.frame = CGRect(x: 3,
-                                        y: contentView.width - 30,
-                                        width: contentView.width - 6,
-                                        height: 30)
         
-        playlistNameLabel.frame = CGRect(x: 3,
-                                         y: contentView.width - 60,
-                                         width: contentView.width - 6,
-                                         height: 55)
-        
-        let imageSize = contentView.height - 70
-        playlistCoverImageView.frame = CGRect(x: (contentView.width-imageSize)/2,
-                                              y: 3,
-                                              width: imageSize,
-                                              height: imageSize)
+        creatorNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        playlistNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        playlistCoverImageView.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            playlistCoverImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            playlistCoverImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            playlistCoverImageView.widthAnchor.constraint(equalToConstant: contentView.width - 70),
+            playlistCoverImageView.heightAnchor.constraint(equalToConstant: contentView.height - 70),
+            
+            playlistNameLabel.topAnchor.constraint(equalTo: playlistCoverImageView.bottomAnchor, constant: 5),
+            playlistNameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            playlistNameLabel.widthAnchor.constraint(equalToConstant: contentView.width),
+            playlistNameLabel.heightAnchor.constraint(equalToConstant: 30),
+            
+            creatorNameLabel.topAnchor.constraint(equalTo: playlistNameLabel.bottomAnchor),
+            creatorNameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            creatorNameLabel.widthAnchor.constraint(equalToConstant: contentView.width),
+            creatorNameLabel.heightAnchor.constraint(equalToConstant: 30)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
     
     override func prepareForReuse() {

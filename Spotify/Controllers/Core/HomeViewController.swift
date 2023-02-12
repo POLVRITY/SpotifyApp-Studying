@@ -146,7 +146,6 @@ class HomeViewController: UIViewController {
                 return
             }
             
-            print("Configuring Models")
             self.configureModels(newAlbums: newAlbums,
                                  playlists: playlists,
                                  tracks: tracks)
