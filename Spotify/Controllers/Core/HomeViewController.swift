@@ -14,7 +14,11 @@ enum BrowseSectionType {
 }
 
 class HomeViewController: UIViewController {
-
+    
+    private var newAlbums: [Album] = []
+    private var playlists: [Playlist] = []
+    private var tracks: [AudioTrack] = []
+    
     private var collectionView: UICollectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
@@ -155,6 +159,10 @@ class HomeViewController: UIViewController {
     private func configureModels(newAlbums: [Album],
                                  playlists: [Playlist],
                                  tracks: [AudioTrack]) {
+        self.newAlbums = newAlbums
+        self.playlists = playlists
+        self.tracks = tracks
+        
         sections.append(.newReleases(viewModels: newAlbums.compactMap({
             return NewReleasesCellViewModel(name: $0.name,
                                             artworkURL: URL(string: $0.images.first?.url ?? ""),
@@ -222,6 +230,23 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let section = sections[indexPath.section]
+        switch section {
+        case .featuredPlaylists:
+            let playlist = playlists[indexPath.row]
+            let viewController = PlaylistViewController(playlist: playlist)
+            navigationController?.pushViewController(viewController, animated: true)
+        case .newReleases:
+            let album = newAlbums[indexPath.row]
+            let viewController = AlbumViewController(album: album)
+            navigationController?.pushViewController(viewController, animated: true)
+        case .recommendedTracks:
+            break
+        }
     }
     
     static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
