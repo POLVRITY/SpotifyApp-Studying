@@ -30,12 +30,24 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         signInButton.frame = CGRect(
             x: 20,
             y: view.height-50-view.safeAreaInsets.bottom,
             width: view.width-40,
             height: 50
         )
+        
+        // TODO: - Change a frame's to constaints
+//        signInButton.translatesAutoresizingMaskIntoConstraints = false
+//        let constaints = [
+//            signInButton.widthAnchor.constraint(equalToConstant: view.width - 40),
+//            signInButton.heightAnchor.constraint(equalToConstant: 50),
+//            signInButton.leadingAnchor.constraint(equalTo: )
+//
+//        ]
+//
+//        NSLayoutConstraint.activate(constaints)
     }
     
     @objc func didTapSignIn() {
